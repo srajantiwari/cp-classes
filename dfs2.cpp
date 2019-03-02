@@ -1,6 +1,6 @@
-// Find the maximum sum of connected components in a (n x n) matrix given that you never move over "0".
+// Find the maximum sum of connected non-zero components in a (n x n) matrix ,that is you never move over "0".
 // Input
-// First line contains a single integer n representing number of rows and columns in n
+// First line contains a single integer n representing number of rows and columns in given matrix
 // Next n lines contains n space seperated integers resprenting values of node
 
 #include <bits/stdc++.h>
@@ -25,7 +25,7 @@ ll MOD=pow(10,9)+7;
 ll INF=1e18+10;
 
 const int N=10;
-int a[N+2][N+2];     // matrix
+int a[N+2][N+2];     // input matrix
 bool vis[N+2][N+2];  // stores whether node is visted or not
 ll s;                // sum which can be achieved for a connected component
 
@@ -61,6 +61,8 @@ ll dfs(int i,int j)
         dfs(i,j-1);
         s+=a[i][j-1];
     }
+    
+    vis[i][j]=true;         // set current node as visited
 }
 
 int main()
@@ -79,8 +81,8 @@ int main()
         {
             if(a[i][j]!=0)
             {
-                s=0;              // every we find a non zero element we consider it as a new connected component, hence s=0
-                dfs(i,j);         // visit it if unvisited
+                s=0;              // every time we find a non zero element we consider it as a new connected component, hence s=0
+                dfs(i,j);         // call dfs for (i,j)
                 ans=max(ans,s);   // ans will be the maximum of all the connected components' values
             }
         }
