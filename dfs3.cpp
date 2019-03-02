@@ -1,7 +1,7 @@
 // Same question 2 with simpler implementation
-// Find the maximum sum of connected components in a (n x n) matrix given that you never move over "0".
+// Find the maximum sum of connected non-zero components in a (n x n) matrix given that you never move over "0".
 // Input
-// First line contains a single integer n representing number of rows and columns in n
+// First line contains a single integer n representing number of rows and columns in given matrix
 // Next n lines contains n space seperated integers resprenting values of node
 
 #include <bits/stdc++.h>
