@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+struct node
+{
+    int data;
+    node* left;
+    node* right;
+};
+
+node* INSERT(int d)
+{
+    node* temp = new node();
+    temp->data=d;
+    temp->left=temp->right=NULL;
+    return temp;
+}
+
+node* add(node* now,int n)
+{
+    if(now==NULL)
+        return INSERT(n);
+    else if(n<now->data)
+        now->left=add(now->left,n);
+    else
+        now->right=add(now->right,n);
+    return now;
+}
+
+void print(node* root)
+{
+    if(root->left!=NULL)
+        print(root->left);
+    cout<<(root->data)<<"\n";
+    if(root->right!=NULL)
+        print(root->right);
+}
+
+int main()
+{
+    int n;cin>>n;
+    node* root=NULL;
+    for(int i=0;i<n;i++)
+    {
+        int a;cin>>a;
+        root=add(root,a);
+    }
+    print(root);
+}
